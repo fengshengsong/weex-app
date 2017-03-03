@@ -1,0 +1,57 @@
+<template>
+	<div id="bottom" class="bottom">
+		<wxc-tabbar tab-items={{tabItems}} selected-color={{sc}} unselected-color={{unsc}}></wxc-tabbar>
+	</div>
+</template>
+
+<style>
+</style>
+
+<script>
+	require('weex-components');
+	module.exports = {
+		data: {
+			sc:'lightblue',
+			unsc:'#000000',
+			tabItems: [
+				{
+					index: 0,
+					title: 'Home',
+					titleColor: '#1b90f7',
+					image: 'http://xiaoyin.info/images/home.png',
+					selectedImage: 'http://xiaoyin.info/images/home.png',
+					// src: '',
+					visibility: 'visible',
+				},
+				{
+					index: 1,
+					title: 'Me',
+					titleColor: '#1b90f7',
+					image: 'http://xiaoyin.info/images/me.png',
+					selectedImage: 'http://xiaoyin.info/images/me.png',
+					// src: 'http://dotwe.org/raw/dist/7e24b83c5868dbd4462e30549999245d.js?itemId=tab2',
+					visibility: 'hidden',
+				},
+				{
+					index: 2,
+					title: 'Test',
+					titleColor: '#1b90f7',
+					image: 'http://xiaoyin.info/images/test.png',
+					selectedImage: 'http://xiaoyin.info/images/test.png',
+					// src: 'http://dotwe.org/raw/dist/7e24b83c5868dbd4462e30549999245d.js?itemId=tab2',
+					visibility: 'hidden',
+				}
+			],
+		},
+		created(){
+			this.$on('tabBar.onClick',function(e){
+				this.changeMainbody(e.detail);			
+			});
+		},
+		methods:{
+			changeMainbody(detail){
+				this._parent.$emit('changeMainbody',detail)
+			}
+		}
+	}
+</script>

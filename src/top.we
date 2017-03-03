@@ -1,0 +1,28 @@
+<template>
+	<div id="top" class="top">
+		<text>{{top_title}}</text>
+	</div>
+</template>
+
+<style>
+.top{
+	height: 66px;
+	line-height: 66px;
+	text-align: center;
+	color: #fff;
+	background-color: #000;
+}
+</style>
+
+<script>
+	require('weex-components');
+	module.exports = {
+		data: {
+			top_title:'Weex Community',
+		},
+		created: function(){
+		},
+		methods:{
+		}
+	}
+</script>

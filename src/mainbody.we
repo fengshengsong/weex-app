@@ -1,0 +1,41 @@
+<template>
+	<div id="mainbody" class="mainbody">
+		<home if="is_home_show"></home>
+		<me if="is_me_show"></me>
+		<test if="is_test_show"></test>
+	</div>
+</template>
+
+<style>
+
+</style>
+
+<script>
+	module.exports = {
+		data:{
+			is_home_show:false,
+			is_me_show:false,
+			is_test_show:true,
+			current_index:1
+		},
+		computed:{
+			is_home_show(){
+				return this.current_index == 0 ? true : false;
+			},
+			is_me_show(){
+				return this.current_index == 1 ? true : false;
+			},
+			is_test_show(){
+				return this.current_index == 2 ? true : false;
+			}
+		},
+		created(){
+			this.$on('changeMainbody',function(e){
+				this.current_index = e.detail.index;
+				console.log(e);
+	        })
+		},
+		methods:{
+		}
+	}
+</script>

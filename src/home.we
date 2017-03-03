@@ -1,0 +1,137 @@
+<element name="preview">
+	<template>
+	    <div id="preview" class="preview" onclick="previewHandler">
+    		<div class="preview-user">
+            	<img class="preview-user-head" src="{{author.avatar_url}}"></img>
+            	<text class="preview-user-name">{{author.loginname}}</text>
+        	</div>
+	    	<div class="preview-topic">
+	    		<div class="preview-title">
+		    		<text style="font-size:36;"> 
+		    			{{title}}
+	    			</text>
+	    		</div>
+		    	<div class="preview-info">
+		    		<text>
+		    			{{'回复/浏览: '+reply_count+'/'+visit_count+'     '+last_reply+'天前'}}
+	    			</text>
+		    	</div>
+	    	</div>
+	    </div>
+	</template>
+
+	<style>
+		.preview{
+			box-sizing: border-box;
+			flex-direction: row;
+			margin: 10;
+			padding: 10;
+			border-bottom: 1px solid rgba(0,0,0,.5);
+		}
+		.preview-user{
+			width: 150;
+		}
+		.preview-user-head{
+			width: 120;
+			height: 120;
+			border-radius: 5;
+			margin-left: 15;
+			margin-right: 15;
+			margin-top: 10;
+			margin-bottom: 10;
+		}
+		.preview-user-name{
+			text-align: center;
+		}
+		.preview-topic{
+			flex: 1;
+			margin-top: 10;
+			margin-bottom: 10;
+			margin-left: 20;
+		}
+		.preview-title{
+			flex: .7;
+		}
+		.preview-info{
+			flex: .3;
+			align-items: flex-end;
+			justify-content: flex-end;
+		}
+		.preview-info text{
+			text-align: right;
+			color:gray;
+		}
+	</style>
+
+	<script>
+	const navigator = require('@weex-module/navigator');
+	const UTILS = require('./UTILS');  
+	module.exports = {
+	    data:{	 
+	    },
+	    computed: {
+	    	last_reply(){
+	    		return UTILS.getHowLong(this.last_reply_at);
+	    	}
+	    },
+	    methods: {
+	        previewHandler(e){
+	        	var baseUrl = UTILS.getBaseUrl(this);
+	        	var params = {
+	        		'url':baseUrl+'templ.js?id='+this.id,
+	        		'animated':'true'
+	        	};
+		        navigator.push(params, function(e) {
+		          console.log('i am the callback.')
+		        });
+	        }
+	    },
+	    ready(){
+	    	// console.log(this.id);
+	    }
+	}
+	</script>
+</element>
+
+<template>
+	<div id="home" class="home">
+		<list id="home-list" class="home-list">
+			<cell class="home-list-cell">
+				<preview repeat="preview_items"></preview>
+			</cell>
+		</list>
+	</div>
+</template>
+
+<style>
+</style>
+
+<script>
+require('weex-components');
+const stream = require('@weex-module/stream');
+
+module.exports = {
+	data: {
+		preview_items:[],
+		url: 'http://www.weex.help/api/v1/topics'
+	},
+	created: function () {
+		this.getPreviewItems();
+	},
+	methods: {
+		getPreviewItems(){
+			stream.fetch({
+				url: this.url,
+				method: 'GET',
+				type: 'json'
+			},(res)=>{
+				if (res.ok) {
+					let data = res.data.data;
+					this.preview_items = data;
+				} 
+			});
+		}
+	}
+}
+</script>
+

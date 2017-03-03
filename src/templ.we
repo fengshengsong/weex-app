@@ -1,0 +1,103 @@
+<template>
+    <div id="templ" class="templ">
+        <top></top>
+        <div class="templ-head">
+            <div class="templ-title"><text style="font-size:40;">{{title}}</text></div>
+            <div class="templ-info">
+                <div class="templ-author"><text>{{author.loginname}}</text></div>
+                <div class="templ-create"><text>{{create_at+'天前'}}</text></div>
+            </div>
+            <div class="templ-content"><text>{{content}}</text></div>
+        </div>
+        <div class="templ-comments">
+            <div class="templ-comment-item" repeat="{{replies}}" index="{{$index}}">
+                <div class="templ-comment-user">
+                    <image class="templ-comment-userhead" src="{{author.avatar_url}}"></image>
+                    <text class="templ-comment-username">{{author.loginname}}</text>
+                    <text class="templ-comment-userfloor">{{$index+1}}楼</text>
+                    <text class="templ-comment-usercreate">{{getHowLong(create_at)+'天前'}}</text>
+                </div>
+                <div class="templ-comment-content">
+                    <text>{{content}}</text>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style>
+    .templ{
+        flex-direction: column;
+    }
+    .templ-head{
+        flex-direction: column;
+        padding: 20;
+    }
+    .templ-info{
+        flex-direction: row;
+        flex: 1;
+        padding: 10;
+        border-bottom: 1px solid gray;
+    }
+    .templ-author{
+        align-self: flex-start;
+        flex: .5;
+        text-align: left;
+    }
+    .templ-create{
+        align-self: flex-end;
+        flex: .5;
+        text-align: right;
+    }
+    .templ-content{
+        padding: 20;
+        border-bottom: 1px solid gray;
+    }
+    .templ-comments{
+        padding: 20;
+    }
+</style>
+
+<script>
+require('weex-components');
+const stream = require('@weex-module/stream');
+const navigator = require('@weex-module/navigator');
+const UTILS = require('./UTILS');
+
+module.exports = {
+    data:{
+        title:'',
+        author:{},
+        create_at:'',
+        content:'',
+        replies:[]
+    },
+    ready(){
+        var current_url = this.$getConfig().bundleUrl;
+        var id = UTILS.getUrlParam('id',current_url);
+        var topic_url = 'http://www.weex.help/api/v1/topic/';
+        var topic_url = topic_url + id + '?mdrender=false';
+        stream.fetch({
+            url: topic_url,
+            method: 'GET',
+            type: 'json'
+        }, (res)=>{
+            if (res.ok) {
+                var data = res.data.data;
+                this.title = data.title;
+                this.content = data.content;
+                this.create_at = UTILS.getHowLong(data.create_at);
+                this.author = data.author;
+                this.replies = data.replies;
+            }
+        });
+    },
+    methods:{
+        getHowLong(time){
+            return UTILS.getHowLong(time);
+        }
+    }
+}
+</script>
+
+

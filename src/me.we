@@ -1,0 +1,70 @@
+<template>
+    <div id="me" class="me">
+        <div class="me-info">
+            <img class="me-info-img" src="{{me_info_img}}"></img>
+            <text class="me-info-name">{{me_info_name}}</text>
+        </div>
+        <div class="me-setting" style="font-size:32;">
+            <div class="me-setting-item"><text>我的信息</text></div>
+            <div class="me-setting-item"><text>我的话题</text></div>
+            <div class="me-setting-item"><text>我的评论</text></div>
+            <div class="me-setting-item"><text>我的收藏</text></div>
+        </div>
+    </div>
+</template>
+
+<style>
+.me {
+    flex-direction: column;
+}
+.me-info{
+    flex: 1;
+    align-items: center;
+    margin-left: 15;
+    margin-right: 15;
+    margin-top: 20; 
+    margin-bottom: 20;
+    padding-top: 20;
+    padding-bottom: 20;
+    background-color: lightblue;
+    border-radius: 5;
+}
+.me-info-img {
+    width: 200;
+    height: 200;
+    border: 2px solid white;
+    border-radius: 100;
+}
+.me-info-name{
+    padding-top: 10;
+}
+.me-setting{
+    flex: 1;
+    margin-left: 15;
+    margin-right: 15;
+    padding-top: 20;
+    padding-bottom: 20;
+    background-color: lightblue;
+    border-radius: 5;
+}
+.me-setting-item{
+    flex-grow: 1;
+    padding-top: 10;
+    padding-bottom: 10;
+    padding-left: 30;
+}
+</style>
+
+<script>
+const UTILS = require('./UTILS');
+module.exports = {
+    data:{
+        me_info_name: 'fengshengsong',
+        me_info_img: 'http://xiaoyin.info/images/gin.jpg',
+    },
+    created: function () {        
+    },
+    methods:{
+    }
+}
+</script>

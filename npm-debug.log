@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\nodejs\\node.exe',
+1 verbose cli   'D:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'dev' ]
+2 info using npm@4.0.0
+3 info using node@v4.4.4
+4 verbose run-script [ 'predev', 'dev', 'postdev' ]
+5 info lifecycle weex-app@1.0.0~predev: weex-app@1.0.0
+6 silly lifecycle weex-app@1.0.0~predev: no script for predev, continuing
+7 info lifecycle weex-app@1.0.0~dev: weex-app@1.0.0
+8 verbose lifecycle weex-app@1.0.0~dev: unsafe-perm in lifecycle true
+9 verbose lifecycle weex-app@1.0.0~dev: PATH: D:\nodejs\node_modules\npm\bin\node-gyp-bin;D:\weex-app\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\IntelSGXPSW\bin\x64\Release\;C:\Program Files\Intel\IntelSGXPSW\bin\win32\Release\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Matlab R2015b\runtime\win64;D:\Matlab R2015b\bin;D:\Matlab R2015b\polyspace\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;D:\Java\jdk1.8.0_91\bin;D:\Java\jdk1.8.0_91\jre\bin;D:\nodejs\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\Python;D:\Python\Scripts;D:\Ruby23-x64\bin;D:\Git\cmd;D:\apache-maven-3.0.4\bin;D:\Tortoise SVN\bin;D:\Ruby23-x64\bin;C:\Users\Feng\AppData\Roaming\npm;C:\Users\Feng\AppData\Local\Microsoft\WindowsApps;D:\texlive\2016\bin\win32
+10 verbose lifecycle weex-app@1.0.0~dev: CWD: D:\weex-app
+11 silly lifecycle weex-app@1.0.0~dev: Args: [ '/d /s /c', 'webpack --watch' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at exports._errnoException (util.js:870:11)
+12 verbose stack     at process.kill (node.js:777:15)
+12 verbose stack     at process.listener (D:\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at emitNone (events.js:72:20)
+12 verbose stack     at process.emit (events.js:166:7)
+12 verbose stack     at processEmit (D:\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at processEmit (D:\nodejs\node_modules\npm\node_modules\npm-registry-client\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at Signal.wrap.onsignal (node.js:804:46)
+13 verbose cwd D:\weex-app
+14 error Windows_NT 10.0.14393
+15 error argv "D:\\nodejs\\node.exe" "D:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "dev"
+16 error node v4.4.4
+17 error npm  v4.0.0
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
